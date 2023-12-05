@@ -1,3 +1,3 @@
 # WD-Task
 
-<img href="Screenshots/Screenshot1.png" />
+<img href="https://github.com/Shaikh-Nabeel/WD-Task/Screenshots/Screenshot1.png" />
