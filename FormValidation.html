@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005c05;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            
+            var name = document.myForm.name.value;
+            var number = document.myForm.number.value;
+            var email = document.myForm.email.value;
+            var age = document.myForm.age.value;
+            var password = document.myForm.password.value;
+
+            var nameRegex = /^[a-zA-Z\s]+$/;
+            if (!name.match(nameRegex)) {
+                alert("Name should not contain any character other than alphabets");
+                return false;
+            }
+
+            if (isNaN(number) || number.length < 10) {
+                alert("Mobile number should be numeric and have at least 10 digits.");
+                return false;
+            }
+
+            var emailRegex = /\S+@\S+\.\S+/;
+            if (!email.match(emailRegex)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            if (isNaN(age) || age < 0 || age > 120) {
+                alert("Age should be a numeric value between 0 and 120.");
+                return false;
+            }
+
+            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!password.match(passwordRegex)) {
+                alert("Password must be 8 characters or more, contain at least one special character, one number, and one capital letter.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+    <form name="myForm" onsubmit="return validateForm()">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Mobile Number:</label>
+        <input type="text" name="number" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Age:</label>
+        <input type="text" name="age" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <input type="submit" value="Submit">
+    </form>
+
+
+
+</body>
+</html>
